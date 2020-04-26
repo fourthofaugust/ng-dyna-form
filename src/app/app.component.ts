@@ -25,7 +25,30 @@ export class AppComponent {
       "questionDescription": "#  of  meals  you  eat  in  an  average  day",
       "responseOptions": [],
       "followUpQuestionIds": null
-    }
+    },
+    {
+      "questionId": 94,
+      "questionTypeId": 1,
+      "questionDescription": "Rank  salt  intake",
+      "responseOptions": [
+        {
+          "responseId": 5,
+          "responseDescription": "High",
+          "isTextRequired": null
+        },
+        {
+          "responseId": 6,
+          "responseDescription": "Medium",
+          "isTextRequired": null
+        },
+        {
+          "responseId": 7,
+          "responseDescription": "Low",
+          "isTextRequired": null
+        }
+      ],
+      "followUpQuestionIds": null
+    },
   ]
 
   submit(values: any): void {
