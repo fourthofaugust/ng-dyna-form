@@ -1,7 +1,7 @@
-<clr-radio-container [formGroup]="group">
+<clr-radio-container>
   <label>{{ question.questionDescription }}</label>
   <clr-radio-wrapper *ngFor="let option of question.responseOptions">
-    <input type="radio" clrRadio [value]="option.responseId"  [name]="question.questionId" [formControlName]="question.questionId"/>
+    <input type="radio" clrRadio [value]="option.responseId"  [name]="question.questionId"/>
     <label>{{ option.responseDescription }}</label>
   </clr-radio-wrapper>
 </clr-radio-container>

@@ -3,7 +3,10 @@
   </header>
   <div class="content-container">
     <div class="content-area">
-      <app-questionnaire [questions]="questions" (onSubmit)="submit($event)"></app-questionnaire>
+      <button class="btn btn-outline" type="button" (click)="nextSection(0)">Submit Therapies</button>
+      <ng-container *ngIf="(questionnaire | async) as section">
+        <app-questionnaire [questionnaire]="section" (onSubmit)="submit($event)"></app-questionnaire>
+      </ng-container>
     </div>
   </div>
 </div>

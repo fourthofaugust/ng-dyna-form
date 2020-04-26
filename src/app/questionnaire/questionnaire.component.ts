@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {IQuestion, IQuestionnaire} from "../models/questionnaire.interface";
 
@@ -7,16 +7,16 @@ import {IQuestion, IQuestionnaire} from "../models/questionnaire.interface";
   templateUrl: './questionnaire.component.html',
   styleUrls: ['./questionnaire.component.css']
 })
-export class QuestionnaireComponent implements OnInit {
+export class QuestionnaireComponent implements OnInit, OnChanges {
 
   form: FormGroup;
 
-  @Input() questions: IQuestion[];
+  @Input() questionnaire: IQuestionnaire;
 
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
 
   get controls() {
-    return this.questions
+    return this.questionnaire.questions
   }
 
   get valid() {
@@ -34,31 +34,14 @@ export class QuestionnaireComponent implements OnInit {
     this.createForm();
   }
 
-  /**
-   * Submits the form.
-   *
-   * @returns {void}
-   */
   submit(): void {
     this.onSubmit.emit(this.value);
   }
 
-  /**
-   * Creates a new form.
-   *
-   * @private
-   * @returns {void}
-   */
   private createForm(): void {
     this.form = this.createGroup();
   }
 
-  /**
-   * Creates a new form group.
-   *
-   * @private
-   * @returns {FormGroup}
-   */
   private createGroup(): FormGroup {
     const group = this.formBuilder.group({});
     this.controls.forEach((control) =>
@@ -66,14 +49,16 @@ export class QuestionnaireComponent implements OnInit {
     return group;
   }
 
-  /**
-   * Creates a new form control.
-   *
-   * @private
-   * @returns {FormControl}
-   */
   private createControl(config: IQuestion): FormControl {
     return this.formBuilder.control('', [Validators.required])
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // This will re-initiate the form on section change
+    // @ts-ignore
+    if (changes.questionnaire) {
+      this.createForm()
+    }
   }
 
 }

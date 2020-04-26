@@ -1,13 +1,14 @@
-<div class="clr-row">
+<!--Therapy Block-->
+<div *ngIf="questionnaire" class="clr-row">
   <div class="clr-col-6">
     <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="card">
       <div class="card-header">
-        Personal Health
+        {{ questionnaire.sectionName }}
       </div>
       <div class="card-block">
         <div class="card-text">
-          <ng-container *ngFor="let question of questions;" dynamicField [question]="question" [group]="form"></ng-container>
+          <ng-container *ngFor="let question of questionnaire.questions;" dynamicField [question]="question" [group]="form"></ng-container>
         </div>
       </div>
       <div class="card-footer">
