@@ -31,6 +31,7 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createForm();
   }
 
   /**
@@ -72,7 +73,7 @@ export class QuestionnaireComponent implements OnInit {
    * @returns {FormControl}
    */
   private createControl(config: IQuestion): FormControl {
-    return this.formBuilder.control({value: ''}, [Validators.required])
+    return this.formBuilder.control('', [Validators.required])
   }
 
 }

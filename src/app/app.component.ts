@@ -10,7 +10,7 @@ export class AppComponent {
     {
       "questionId": 3,
       "questionTypeId": 5,
-      "questionDescription": "Are you dieting?",
+      "questionDescription": "Are you Phani?",
       "responseOptions": [],
     },
     {
