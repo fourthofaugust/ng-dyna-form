@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'phanimahesh-test';
+  questions = [
+    {
+      "questionId": 3,
+      "questionTypeId": 5,
+      "questionDescription": "Are you dieting?",
+      "responseOptions": [],
+    },
+    {
+      "questionId": 4,
+      "questionTypeId": 5,
+      "questionDescription": "Are you on a physician prescribed medical diet?",
+      "responseOptions": [],
+    },
+    {
+      "questionId": 93,
+      "questionTypeId": 5,
+      "questionDescription": "#  of  meals  you  eat  in  an  average  day",
+      "responseOptions": [],
+      "followUpQuestionIds": null
+    }
+  ]
+
+  submit(values: any): void {
+    console.log('Form submitted!');
+    console.log(values);
+  }
+
 }
